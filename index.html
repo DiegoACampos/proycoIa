@@ -1,0 +1,53 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Fintech</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .seccion { margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+  <h1>Sistema Fintech</h1>
+
+  <div class="seccion">
+    <h2>Registro de Cliente</h2>
+    <input id="nombre" placeholder="Nombre">
+    <input id="apellido" placeholder="Apellido">
+    <input id="dni" placeholder="DNI">
+    <input id="correo" placeholder="Correo Electrónico">
+    <input id="password" type="password" placeholder="Contraseña">
+    <button onclick="crearCliente()">Registrar Cliente</button>
+  </div>
+
+  <div class="seccion">
+    <h2>Crear Cuenta</h2>
+    <input id="clienteIdCuenta" placeholder="ID Cliente">
+    <input id="saldoInicial" type="number" placeholder="Saldo Inicial">
+    <button onclick="crearCuenta()">Crear Cuenta</button>
+  </div>
+
+  <div class="seccion">
+    <h2>Realizar Movimiento</h2>
+    <input id="codigoCuenta" placeholder="Código Cuenta">
+    <select id="tipoMovimiento">
+      <option value="deposito">Depósito</option>
+      <option value="retiro">Retiro</option>
+    </select>
+    <input id="monto" type="number" placeholder="Monto">
+    <button onclick="realizarMovimiento()">Ejecutar</button>
+  </div>
+
+  <div class="seccion">
+    <h2>Consultar Saldo</h2>
+    <input id="consultaCuenta" placeholder="Código Cuenta">
+    <button onclick="consultarSaldo()">Consultar</button>
+    <p id="saldoResultado"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@startuml
+class Cliente {
+  - id: number
+  - nombre: string
+  - apellido: string
+  - dni: string
+  - correo: string
+  - password: string
+  + constructor(id, nombre, apellido, dni, correo, password)
+}
+
+class Cuenta {
+  - codigo: string
+  - saldo: number
+  - clienteId: number
+  - movimientos: Array
+  + constructor(codigo, saldoInicial, clienteId)
+  + agregarMovimiento(tipo: string, monto: number): void
+}
+
+Cliente "1" --> "0..*" Cuenta : posee >
+
+@enduml
