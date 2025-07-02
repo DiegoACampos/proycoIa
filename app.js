@@ -1,4 +1,6 @@
 // app.js
+const blockchain = new Blockchain(); // Instancia global
+
 class Cliente {
   constructor(id, nombre, apellido, dni, correo, password) {
     this.id = id;
@@ -58,8 +60,27 @@ function realizarMovimiento() {
   const tipo = document.getElementById('tipoMovimiento').value;
   const monto = parseFloat(document.getElementById('monto').value);
   const cuenta = cuentas.find(c => c.codigo === codigo);
+
   if (cuenta) {
     cuenta.agregarMovimiento(tipo, monto);
+
+    // Crear bloque para registrar en la blockchain
+    const datosMovimiento = {
+      cuentaCodigo: cuenta.codigo,
+      tipo,
+      monto,
+      saldoFinal: cuenta.saldo,
+      fecha: new Date().toLocaleString()
+    };
+
+    const nuevoBloque = new Bloque(
+      blockchain.cadena.length,
+      new Date().toLocaleString(),
+      datosMovimiento
+    );
+
+    blockchain.agregarBloque(nuevoBloque);
+
     alert('Movimiento registrado. Nuevo saldo: $' + cuenta.saldo);
   } else {
     alert('Cuenta no encontrada.');
